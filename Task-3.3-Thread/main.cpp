@@ -30,10 +30,10 @@ public:
 };
 
 
-void swap(Data &data1, Data &data2) {
+void swap(Data& data1, Data& data2) {
     std::unique_lock lk1(data1.m, std::defer_lock);
     std::unique_lock lk2(data2.m, std::defer_lock);
-    std::lock(data1.m, data2.m);
+    std::lock(lk1, lk2);
     int tmp1 = data1.num1_;
     data1.num1_= data2.num1_;
     data2.num1_ = tmp1;
