@@ -24,7 +24,7 @@ public:
     }
     
     void print_num() {
-        std::cout << "Скалярные значения класса " << class_name_ << ": " << num1_ << " и " << num2_;
+        std::cout << "Скалярные значения класса " << class_name_ << ": " << num1_ << " и " << num2_ << "\n";
     }
     
 };
@@ -51,7 +51,7 @@ int main(int argc, const char * argv[]) {
     Data data1(5,4, "data1");
     Data data2(6,7, "data2");
     
-    std::thread th1(swap, data1, data2);
+    std::thread th1(swap, std::ref(data1), std::ref(data2));
     th1.join();
     
     
